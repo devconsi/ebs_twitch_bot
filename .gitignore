@@ -1,3 +1,4 @@
 http/GetAppCredentials.http
 node_modules
 http
+.env
