@@ -9,5 +9,9 @@
     "nodemon": "^2.0.15",
     "tmi.js": "^1.8.5",
     "ws": "^8.5.0"
-  }
+  },
+  "main": "server.mjs",
+	"scripts": {
+		"start": "node --experimental-modules server.mjs"
+	}
 }
