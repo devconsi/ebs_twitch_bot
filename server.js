@@ -1,6 +1,6 @@
 import axios from 'axios';
 import * as tmi from 'tmi.js';
-import { WebSocket } from 'ws';
+import WebSocket from 'ws';
 import dotenv from 'dotenv';
 import http from 'http';
 import https from 'https';
@@ -77,6 +77,7 @@ app.get('/ticket', (req, res) => {
 app.post('/callback', (req, res) => {
   const origin = req.get('origin');
   
+  console.log("Trying PONG");
   //send to webscoket
   blastMessage(PONG, {'username': "CALLBACK"});
 
@@ -115,7 +116,7 @@ let token = await getTwitchAuthToken(CLIENT_ID, CLIENT_SECRET, ACCESS_TOKEN, REF
 
 function getOriginFromHeaders(headers) {
   for (let i = 0; i < headers.length; i++) {
-    if (headers[i] === "Origin") {
+    if (headers[i] === "origin") {
       return headers[i+1];
     }
   }
