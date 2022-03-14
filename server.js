@@ -55,6 +55,8 @@ if (DEPLOYED) {
   const credentials = {key: privateKey, cert: certificate};
   server = https.createServer(credentials, app);
   server.listen(443)
+  console.log(`Listening on port  443`)
+
 } else {
   // const __dirname = "/home/egarcia/git/animated-twitch-chat-bot/api"
   // const privateKey = fs.readFileSync(path.join(__dirname, 'key.pem'));
@@ -63,6 +65,7 @@ if (DEPLOYED) {
   //   const credentials = {key: privateKey, cert: certificate};
   server = http.createServer(app)
   server.listen(APP_PORT)
+  console.log(`Listening on port  ${APP_PORT}`);
 }
 
 app.get('/ticket', (req, res) => {
