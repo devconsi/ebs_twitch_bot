@@ -106,7 +106,7 @@ app.post("/callback", (req, res) => {
 
     if (MESSAGE_TYPE_NOTIFICATION === req.headers[MESSAGE_TYPE]) {
       //TODO Correctl;y handle requests
-      blastMessage(PONG, { username: "CALLBACK" });
+      blastMessage(FOLLOW, { username: notification.event.user_login});
 
       console.log(`Event type: ${notification.subscription.type}`);
       console.log(JSON.stringify(notification.event, null, 4));
@@ -177,6 +177,7 @@ const TICKET_EXPIRATION = 60 * 1000;
 const CHAT_COMMAND = "CHAT_COMMAND";
 const POINTS_REDEMPTION = "POINTS_REDEMPTION";
 const PONG = "PONG";
+const FOLLOW = "FOLLOW";
 
 wss.on("connection", (ws, request) => {
   const origin = getOriginFromHeaders(request.rawHeaders);
