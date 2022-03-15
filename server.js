@@ -197,16 +197,14 @@ wss.on("connection", (ws, request) => {
     const message = JSON.parse(messageAsByte.toString());
     //Send a response if PING
     if (message.message === "ping") {
-      console.log("Got a PING request WSS");
       ws.send(JSON.stringify({ type: PONG, message: { action: "PONG" } }));
     } else {
-      console.log("Ignore request for on message to WSS");
+      //Ignore messages that are not ping
     }
   });
 });
 
 function getOriginFromHeaders(headers) {
-  console.log(headers);
   for (let i = 0; i < headers.length; i++) {
     if (headers[i] === "origin") {
       return headers[i + 1];
